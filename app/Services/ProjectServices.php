@@ -6,7 +6,7 @@ use App\Models\Project;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
-class ProjectService
+class ProjectServices
 {
 
     public function getAllForUser(User $user): Collection

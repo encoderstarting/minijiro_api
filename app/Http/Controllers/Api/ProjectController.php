@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+
 use App\Http\Requests\ProjectEditRequest;
 use App\Http\Requests\ProjectStoreRequest;
 use App\Models\Project;
-use App\Services\ProjectService;
+use App\Services\ProjectServices;
 use App\Http\Resources\ProjectResource;
 use Illuminate\Http\Request;
+
+
 
 class ProjectController extends Controller
 {
     // Внедряем сервис через конструктор
-    public function __construct(private ProjectService $projectService) {}
+    public function __construct(private readonly ProjectServices $projectService) {}
 
     public function index(Request $request)
     {
@@ -21,7 +23,7 @@ class ProjectController extends Controller
         return ProjectResource::collection($projects);
     }
 
-    public function store(ProjectStoreRequest, $request)
+    public function store(ProjectStoreRequest $request)
     {
         $data = $request->validated();
 
