@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Project extends Model
 {
     use HasFactory;
+
+    public mixed $user_id;
     protected $fillable = ['user_id','description','name'];
     public function owner(): BelongsTo{
         return $this->belongsTo(User::class);
